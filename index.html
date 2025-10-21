@@ -31,17 +31,20 @@
 
         .image-container {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 500px;
+            max-height: 500px;
+            width: 80vw;
+            height: auto;
         }
 
         .main-image {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
+            height: auto;
+            object-fit: contain;
+            position: relative;
             z-index: 1;
         }
 
@@ -91,22 +94,6 @@
             animation: flicker 0.15s infinite alternate;
         }
 
-        /* rgb split effect */
-        .rgb-split {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('stela-dumb-sweatshirt (1).png');
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            mix-blend-mode: screen;
-            opacity: 0.3;
-            animation: glitch 3s infinite;
-        }
-
         .countdown {
             font-family: 'Lexend', sans-serif;
             font-weight: 700;
@@ -122,6 +109,10 @@
             z-index: 5;
             width: 90%;
             max-width: 800px;
+            text-shadow: 
+                0 0 20px rgba(255, 255, 255, 0.9),
+                0 0 40px rgba(255, 255, 255, 0.6),
+                0 0 60px rgba(255, 255, 255, 0.3);
         }
 
         /* CRT effects */
@@ -221,7 +212,6 @@
         <div class="image-container">
             <img src="stela-dumb-sweatshirt (1).png" alt="stela" class="main-image">
             <div class="glitch-overlay"></div>
-            <div class="rgb-split"></div>
         </div>
         
         <div class="countdown" id="countdown">
@@ -247,11 +237,11 @@
             const countdownEl = document.getElementById('countdown');
             
             if (days > 0) {
-                countdownEl.textContent = `${days} days left until this page is operational`;
+                countdownEl.textContent = `${days} days left until this page is operational!`;
             } else if (days === 0) {
-                countdownEl.textContent = 'operational TODAY';
+                countdownEl.textContent = 'operational TODAY!';
             } else {
-                countdownEl.textContent = 'this page is operational';
+                countdownEl.textContent = 'this page is operational!';
             }
         }
         
