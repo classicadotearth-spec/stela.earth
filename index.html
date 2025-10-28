@@ -221,33 +221,24 @@
 
     <script>
         function updateCountdown() {
-            const now = new Date();
-            
-            // SF is UTC-7 (PDT) or UTC-8 (PST) - using PST
-            const sfOffset = -8 * 60; // minutes
-            const localOffset = now.getTimezoneOffset(); // minutes
-            const sfTime = new Date(now.getTime() + (sfOffset - localOffset) * 60000);
-            
-            // target: october 21, 2030 at midnight SF time
-            const target = new Date('2030-10-21T00:00:00-08:00');
-            
-            const diff = target - sfTime;
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            
-            const countdownEl = document.getElementById('countdown');
-            
-            if (days > 0) {
-                countdownEl.textContent = `${days} days left until this page is operational!`;
-            } else if (days === 0) {
-                countdownEl.textContent = 'operational TODAY!';
-            } else {
-                countdownEl.textContent = 'this page is operational!';
-            }
-        }
-        
-        updateCountdown();
-        // update every hour
-        setInterval(updateCountdown, 3600000);
+    const now = new Date();
+    const target = new Date('2030-10-21T00:00:00-08:00');
+    const diff = target - now;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    
+    const countdownEl = document.getElementById('countdown');
+    
+    if (days > 0) {
+        countdownEl.textContent = `${days} days left until this page is operational!`;
+    } else if (days === 0) {
+        countdownEl.textContent = 'operational TODAY!';
+    } else {
+        countdownEl.textContent = 'this page is operational!';
+    }
+}
+
+updateCountdown();
+setInterval(updateCountdown, 3600000);
     </script>
 </body>
 </html>
