@@ -242,7 +242,7 @@
     
     <div class="container">
         <div class="image-container">
-            <img src="stela-dumb-sweatshirt (1).png" alt="stela" class="main-image">
+            <img src="stela-dumb-sweatshirt (1).png" alt="stela" class="main-image" id="stelaImage">
             <div class="glitch-overlay"></div>
         </div>
         
@@ -257,6 +257,16 @@
     </div>
 
     <script>
+        function checkChristmas() {
+            const now = new Date();
+            const month = now.getMonth();
+            const day = now.getDate();
+            
+            if (month === 11 && (day === 24 || day === 25)) {
+                document.getElementById('stelaImage').src = 'stelahohohohoe.png';
+            }
+        }
+
         function updateCountdown() {
             const now = new Date();
             const target = new Date('2030-10-21T00:00:00-08:00');
@@ -274,6 +284,7 @@
             }
         }
 
+        checkChristmas();
         updateCountdown();
         setInterval(updateCountdown, 3600000);
 
